@@ -16,3 +16,10 @@ Aclean_tbl <- Adata_tbl %>%
   mutate(across(q1:q5, as.integer)) %>% 
   inner_join(Anotes_tbl, by="parnum") %>% 
   filter(is.na(notes))
+ABclean_tbl <- Bdata_tbl %>% 
+  mutate(datadate = mdy_hms(datadate)) %>% 
+  mutate(across(q1:q10, as.integer)) %>% 
+  inner_join(Bnotes_tbl, by = "parnum") %>% 
+  filter(is.na(notes)) %>% 
+  select(-notes) 
+
